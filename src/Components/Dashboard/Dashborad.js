@@ -56,7 +56,7 @@ const Dashboard = () => {
         <Header />
         <div className="p-4" style={{ backgroundColor: "#0B3142" }}>
           <h1 className="text-3xl font-bold">Dashboard</h1>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-3 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-3 mt-4 lg:grid-cols-5 gap-3 mt-4">
             <div className="bg-gray-800 p-4 rounded flex items-center justify-between">
               <div className="flex items-center">
                 <div>
@@ -118,7 +118,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4 mt-4   ">
             <div className="md:col-span-2">
               <div className="bg-gray-800 p-4 rounded">
                 <h2 className="text-xl font-bold">Activity</h2>
@@ -183,7 +183,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
             <div className="bg-gray-800 p-4 rounded">
               <h2 className="text-xl font-bold">Recent Orders</h2>
               <div className="mt-2 space-y-2">
