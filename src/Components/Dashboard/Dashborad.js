@@ -43,6 +43,15 @@ const Dashboard = () => {
     { name: "27", value: 3490 },
   ];
 
+  const recentOrders = [
+    { name: "Wade Warren", orderNo: "15478256", amount: "$124.00", status: "Delivered", imageUrl: "https://randomuser.me/api/portraits/men/1.jpg" },
+    { name: "Jane Cooper", orderNo: "48965786", amount: "$365.02", status: "Delivered", imageUrl: "https://randomuser.me/api/portraits/women/1.jpg" },
+    { name: "Guy Hawkins", orderNo: "78985215", amount: "$45.88", status: "Cancelled", imageUrl: "https://randomuser.me/api/portraits/men/2.jpg" },
+    { name: "Kristin Watson", orderNo: "20965732", amount: "$65.00", status: "Pending", imageUrl: "https://randomuser.me/api/portraits/women/2.jpg" },
+    { name: "Cody Fisher", orderNo: "95715620", amount: "$545.00", status: "Delivered", imageUrl: "https://randomuser.me/api/portraits/men/3.jpg" },
+    { name: "Savannah Nguyen", orderNo: "78514568", amount: "$128.20", status: "Delivered", imageUrl: "https://randomuser.me/api/portraits/women/3.jpg" },
+  ];
+
   return (
     <div
       className="flex flex-col md:flex-row"
@@ -183,93 +192,44 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
-            <div className="bg-gray-800 p-4 rounded">
-              <h2 className="text-xl font-bold">Recent Orders</h2>
-              <div className="mt-2 space-y-2">
-                <div className="flex justify-between items-center">
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mt-4"> 
+               <div className="bg-gray-800 p-4 rounded mt-4">
+            <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
+            <div className="space-y-4">
+              {recentOrders.map((order, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between bg-gray-700 p-4 rounded gap-4"
+                >
                   <div className="flex items-center">
                     <img
-                      className="w-8 h-8 rounded-full mr-2"
-                      src="https://randomuser.me/api/portraits/men/1.jpg"
-                      alt="Wade Warren"
+                      src={order.imageUrl}
+                      alt={order.name}
+                      className="w-12 h-12 rounded-full mr-4"
                     />
-                    <span>Wade Warren</span>
+                    <div>
+                      <h3 className="text-md font-semibold">{order.name}</h3>
+                      <p className="text-sm text-gray-400">Order No: {order.orderNo}</p>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm">Order No. 15478256</p>
-                    <p className="text-sm">$124.00</p>
-                    <p className="text-green-500">Delivered</p>
+                  <div>
+                    <p className="text-md">{order.amount}</p>
+                  </div>
+                  <div className={`px-2 py-1 rounded text-white ${order.status === 'Delivered' ? 'bg-green-500' : order.status === 'Cancelled' ? 'bg-red-500' : 'bg-yellow-500'}`}>
+                    {order.status}
                   </div>
                 </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center">
-                    <img
-                      className="w-8 h-8 rounded-full mr-2"
-                      src="https://randomuser.me/api/portraits/women/1.jpg"
-                      alt="Jane Cooper"
-                    />
-                    <span>Jane Cooper</span>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm">Order No. 48965786</p>
-                    <p className="text-sm">$305.02</p>
-                    <p className="text-green-500">Delivered</p>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center">
-                    <img
-                      className="w-8 h-8 rounded-full mr-2"
-                      src="https://randomuser.me/api/portraits/men/2.jpg"
-                      alt="Guy Hawkins"
-                    />
-                    <span>Guy Hawkins</span>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm">Order No. 78989215</p>
-                    <p className="text-sm">$45.88</p>
-                    <p className="text-red-500">Cancelled</p>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center">
-                    <img
-                      className="w-8 h-8 rounded-full mr-2"
-                      src="https://randomuser.me/api/portraits/women/2.jpg"
-                      alt="Kristin Watson"
-                    />
-                    <span>Kristin Watson</span>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm">Order No. 20965732</p>
-                    <p className="text-sm">$65.00</p>
-                    <p className="text-yellow-500">Pending</p>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center">
-                    <img
-                      className="w-8 h-8 rounded-full mr-2"
-                      src="https://randomuser.me/api/portraits/men/3.jpg"
-                      alt="Cameron Williamson"
-                    />
-                    <span>Cameron Williamson</span>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm">Order No. 50912786</p>
-                    <p className="text-sm">$149.99</p>
-                    <p className="text-green-500">Delivered</p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
+            </div>
+
             <div
-              className="bg-gray-800 p-4 rounded  overflow-y-auto custom-scrollbar"
-              style={{ height: 470 }}
+              className="bg-gray-800 p-4 rounded mt-4  overflow-y-auto custom-scrollbar"
+              style={{ height: 670 }}
             >
               <h2 className="text-xl font-bold">Customer's Feedback</h2>
-              <div className="space-y-2 mt-4">
+             <div className="bg-gray-800 p-4 rounded mt-4">
+              <div className="space-y-4">
                 <div className="bg-gray-700 p-4 rounded">
                   <div className="flex items-center">
                     <img
@@ -398,7 +358,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
   );
 };
 
